@@ -7,7 +7,7 @@
 	</configSuffixes>
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
-		<config>src/rmi-beans.xml</config>
+		<config>src/main/java/client-rmi-beans.xml</config>
 	</configs>
 	<configSets>
 	</configSets>
