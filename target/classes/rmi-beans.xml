@@ -8,14 +8,39 @@
 
 
 
-<bean name="serviceBean" class="org.devdexter.spr.rmi.plain.MessagingServiceImpl">
-</bean>
+<bean name="serviceBean1" class="org.devdexter.spr.rmi.plain.MessagingServiceImpl"/>
 
 <bean id="rmiExporter" class="org.springframework.remoting.rmi.RmiServiceExporter">
-	<property name="service" ref="serviceBean"/>
+	<property name="service" ref="serviceBean1"/>
 	<property name="serviceInterface" value="org.devdexter.spr.rmi.plain.MessagingService"/>
 	<property name="serviceName" value="ServiceBean"/>
 	<property name="alwaysCreateRegistry" value="true"/>
+</bean>
+	
+<bean name="serviceBean2" class="org.devdexter.spr.rmi.plain.MessagingServiceImpl"/>
+
+<bean id="rmiExporterSsl" class="org.springframework.remoting.rmi.RmiServiceExporter">
+	<property name="service" ref="serviceBean2"/>
+	<property name="serviceInterface" value="org.devdexter.spr.rmi.plain.MessagingService"/>
+	<property name="serviceName" value="ServiceBeanSsl"/><!-- This is different from the above ...  -->
+	<property name="alwaysCreateRegistry" value="true"/>
+	
+	<!-- Ssl part: -->
+	<property name="registryPort" value="21099"/>
+	
+	<property name="serverSocketFactory">
+		<bean class="javax.rmi.ssl.SslRMIServerSocketFactory"/>
+	</property>
+	<property name="registryServerSocketFactory">
+		<bean class="javax.rmi.ssl.SslRMIServerSocketFactory"/>
+	</property>
+	<property name="clientSocketFactory">
+		<bean class="javax.rmi.ssl.SslRMIClientSocketFactory"/>
+	</property>
+	<property name="registryClientSocketFactory">
+		<bean class="javax.rmi.ssl.SslRMIClientSocketFactory"/>
+	</property>
+	
 </bean>
 
 </beans>

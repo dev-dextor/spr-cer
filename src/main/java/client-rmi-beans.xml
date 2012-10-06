@@ -12,5 +12,7 @@
 		<property name="serviceUrl" value="rmi://localhost:1099/ServiceBean"/>
 		<property name="serviceInterface" value="org.devdexter.spr.rmi.plain.MessagingService"/>
 	</bean>
+	
+	
 
 </beans>
